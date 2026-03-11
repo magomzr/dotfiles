@@ -39,6 +39,7 @@ set matchpairs+=<:>             " extends showmatch behavior with <>
 let mapleader = " "             " space as leader key
 
 " Remaps
-nnoremap <leader><space> :noh<CR>
+nnoremap <leader><space> :noh<CR> " turn off highlighting
+nnoremap <leader>e :Explore<CR>   " to quickly go back to explorer
 " nnoremap j gj                   " move by visual lines. works with wrap
 " nnoremap k gk                   " move by visual lines. works with wrap
