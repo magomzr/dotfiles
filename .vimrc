@@ -41,5 +41,6 @@ let mapleader = " "             " space as leader key
 " Remaps
 nnoremap <leader><space> :noh<CR> " turn off highlighting
 nnoremap <leader>e :Explore<CR>   " to quickly go back to explorer
+nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>
 " nnoremap j gj                   " move by visual lines. works with wrap
 " nnoremap k gk                   " move by visual lines. works with wrap
