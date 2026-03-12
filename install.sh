@@ -8,7 +8,6 @@ echo "Creating symlinks..."
 ln -sf "$DOTFILES/.vimrc" "$HOME/.vimrc"
 
 # Neovim
-mkdir -p "$HOME/.config/nvim"
-ln -sf "$DOTFILES/init.vim" "$HOME/.config/nvim/init.vim"
+ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 
 echo "Done."
