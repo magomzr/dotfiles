@@ -27,9 +27,18 @@ return {
   -- mason-lspconfig: mason - lspconfig bridge
   {
     'williamboman/mason-lspconfig.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       require('mason-lspconfig').setup({
         ensure_installed = { 'ts_ls' },
+        handlers = {
+          function(server_name)
+            require('lspconfig')[server_name].setup({})
+          end,
+          ts_ls = function()
+            require('lspconfig').ts_ls.setup({})
+          end,
+        }
       })
     end,
   },
@@ -37,10 +46,6 @@ return {
   -- lspconfig: configure the servers
   {
     'neovim/nvim-lspconfig',
-    config = function()
-      vim.lsp.config('ts_ls', {})
-      vim.lsp.enable('ts_ls')
-    end,
   },
 
   -- nvim-cmp: autocomplete
