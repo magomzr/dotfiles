@@ -41,6 +41,24 @@ let mapleader = " "             " space as leader key
 " Remaps
 nnoremap <leader><space> :noh<CR> " turn off highlighting
 nnoremap <leader>e :Explore<CR>   " to quickly go back to explorer
-nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>
 " nnoremap j gj                   " move by visual lines. works with wrap
 " nnoremap k gk                   " move by visual lines. works with wrap
+
+" Terminal
+nnoremap <leader>t :vsplit \| terminal<CR>
+
+" Navigation
+nnoremap <C-h> <C-w>h       " move to left split
+nnoremap <C-l> <C-w>l       " move to right split
+nnoremap <C-j> <C-w>j       " move to bottom split
+nnoremap <C-k> <C-w>k       " move to top split
+
+" Files
+nnoremap <leader>w :w<CR>       " save file
+nnoremap <leader>q :q<CR>       " close window
+
+" LSP
+nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>  " show error detail
+nnoremap gd :lua vim.lsp.buf.definition()<CR>            " go to definition
+nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>        " rename symbol
+nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>   " code actions
