@@ -30,7 +30,7 @@ return {
     dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'ts_ls' },
+        ensure_installed = { 'ts_ls', 'gopls' },
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -38,6 +38,9 @@ return {
           end,
           ts_ls = function()
             require('lspconfig').ts_ls.setup({})
+          end,
+          gopls = function()
+            require('lspconfig').gopls.setup({})
           end,
         }
       })
