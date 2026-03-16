@@ -7,6 +7,8 @@ set cursorline                  " highlights current line
 set scrolloff=8                 " keep 8 context lines when scrolling
 set showmatch                   " jump to matching bracket when typing
 set title                       " show filename in window titlebar
+set splitbelow                  " new horizontal split opens below, more natural
+set splitright                  " new vertical split opens to the right, more natural
 
 " Indentation
 set autoindent                  " keep previous line indentation
@@ -64,3 +66,9 @@ nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>   " code actions
 
 " Formatter
 nnoremap <leader>f :lua require('conform').format()<CR>  " format file
+
+" Jump to last cursor position when reopening a file
+autocmd BufReadPost *
+  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
