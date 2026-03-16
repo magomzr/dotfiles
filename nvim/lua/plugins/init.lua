@@ -1,18 +1,22 @@
 return {
   -- theme
   {
-    'uloco/bluloco.nvim',
-    lazy = false,
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
-    dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      require("bluloco").setup({
-        style = "dark",
-        transparent = false,
-        italics = false,
+      require("gruvbox").setup({
+        contrast = "",          -- medium, the classic look
+        italic = {
+          strings = false,      -- no italics on strings, cleaner look
+          comments = true,
+          emphasis = true,
+          operators = false,
+          folds = true,
+        },
+        bold = true,
       })
-      vim.opt.termguicolors = true
-      vim.cmd('colorscheme bluloco')
+      vim.o.background = "dark"
+      vim.cmd("colorscheme gruvbox")
     end,
   },
 
