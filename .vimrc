@@ -24,7 +24,6 @@ set wildmenu                    " autocomplete with tab in commands bar
 
 " Usability
 set nowrap                      " no line breaking on long lines
-set clipboard=unnamed           "use same system clipboard
 set laststatus=2                " always show status bar at the bottom
 set backspace=indent,eol,start  " backspace like any other editor
 set autoread                    " auto reload file if changed outside vim
@@ -62,3 +61,6 @@ nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>  " show error detail
 nnoremap gd :lua vim.lsp.buf.definition()<CR>            " go to definition
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>        " rename symbol
 nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>   " code actions
+
+" Formatter
+nnoremap <leader>f :lua require('conform').format()<CR>  " format file

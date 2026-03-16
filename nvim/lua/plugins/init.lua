@@ -25,6 +25,13 @@ return {
     'williamboman/mason.nvim',
     config = function()
       require('mason').setup()
+      local registry = require('mason-registry')
+      local tools = { 'prettier' }
+      for _, tool in ipairs(tools) do
+        if not registry.is_installed(tool) then
+          vim.cmd('MasonInstall ' .. tool)
+        end
+      end
     end,
   },
 
@@ -77,6 +84,24 @@ return {
           { name = 'nvim_lsp' },
           { name = 'buffer' },
           { name = 'path' },
+        },
+      })
+    end,
+  },
+
+  -- conform: formatter
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup({
+        formatters_by_ft = {
+          javascript = { 'prettier' },
+          typescript = { 'prettier' },
+          javascriptreact = { 'prettier' },
+          typescriptreact = { 'prettier' },
+          json = { 'prettier' },
+          css = { 'prettier' },
+          html = { 'prettier' },
         },
       })
     end,
