@@ -39,36 +39,73 @@ set matchpairs+=<:>             " extends showmatch behavior with <>
 " Leader
 let mapleader = " "             " space as leader key
 
-" Remaps
-nnoremap <leader><space> :noh<CR> " turn off highlighting
-nnoremap <leader>e :Explore<CR>   " to quickly go back to explorer
-" nnoremap j gj                   " move by visual lines. works with wrap
-" nnoremap k gk                   " move by visual lines. works with wrap
+" ***** Remaps *****
+" turn off highlighting
+nnoremap <leader><space> :noh<CR>
+" to quickly go back to explorer
+nnoremap <leader>e :Explore<CR>
+" move by visual lines. works with wrap
+nnoremap j gj
+" move by visual lines. works with wrap
+nnoremap k gk
 
 " Terminal
 nnoremap <leader>t :vsplit \| terminal<CR>
 
 " Navigation
-nnoremap <C-h> <C-w>h       " move to left split
-nnoremap <C-l> <C-w>l       " move to right split
-nnoremap <C-j> <C-w>j       " move to bottom split
-nnoremap <C-k> <C-w>k       " move to top split
+" move to left split
+nnoremap <C-h> <C-w>h
+" move to right split
+nnoremap <C-l> <C-w>
+" move to bottom split
+nnoremap <C-j> <C-w>j
+" move to top split
+nnoremap <C-k> <C-w>k
+
+" Move lines up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Files
-nnoremap <leader>w :w<CR>       " save file
-nnoremap <leader>q :q<CR>       " close window
+" save file
+nnoremap <leader>w :w<CR>
+" close window
+nnoremap <leader>q :q<CR>
 
 " LSP
-nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>  " show error detail
-nnoremap gd :lua vim.lsp.buf.definition()<CR>            " go to definition
-nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>        " rename symbol
-nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>   " code actions
+" show error detail
+nnoremap <leader>d :lua vim.diagnostic.open_float()<CR>
+" go to definition
+nnoremap gd :lua vim.lsp.buf.definition()<CR>
+" rename symbol
+nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
+" code actions
+nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 
 " Formatter
-nnoremap <leader>f :lua require('conform').format()<CR>  " format file
+" format file
+nnoremap <leader>f :lua require('conform').format()<CR>
+
+" Grepping
+" quick grep
+nnoremap <leader>g :grep<space>
+" next result
+nnoremap ]g :cnext<CR>
+" previous result
+nnoremap [g :cprev<CR>
 
 " Jump to last cursor position when reopening a file
 autocmd BufReadPost *
   \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
+
+" Using ripgrep as the external command for grepping
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
+endif
