@@ -32,6 +32,7 @@ gclean() {
 
   # Checkout target branch, fresh from remote
   echo "checking out '$target_branch' from remote..."
+  git checkout "$target_branch" || return 1
 
   # Delete tmp branch
   if [[ "$created_tmp" == true ]]; then
