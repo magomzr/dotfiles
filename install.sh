@@ -8,6 +8,7 @@ echo "Creating symlinks..."
 ln -sf "$DOTFILES/.vimrc" "$HOME/.vimrc"
 
 # Neovim
+rm -rf "$HOME/.config/nvim"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 
 # Shell functions
