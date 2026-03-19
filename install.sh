@@ -10,10 +10,12 @@ ln -sf "$DOTFILES/.vimrc" "$HOME/.vimrc"
 # Neovim
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 
-# Zsh
-ln -sf "$DOTFILES/.zshrc" "$HOME/.zshrc"
-
-# Bash
-ln -sf "$DOTFILES/.bashrc" "$HOME/.bashrc"
+# Shell functions
+if ! grep -q "dotfiles/shell/functions.sh" "$HOME/.zshrc" 2>/dev/null; then
+  echo "source ~/dotfiles/shell/functions.sh" >> "$HOME/.zshrc"
+fi
+if ! grep -q "dotfiles/shell/functions.sh" "$HOME/.bashrc" 2>/dev/null; then
+  echo "source ~/dotfiles/shell/functions.sh" >> "$HOME/.bashrc"
+fi
 
 echo "Done."
