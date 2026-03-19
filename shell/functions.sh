@@ -2,7 +2,7 @@ gclean() {
   local target_branch="${1:-main}"
   local current_branch
   local created_tmp=false
-  local tmp_branch="tmp/cleanup-$$"
+  local tmp_branch="cleanup/$$"
 
   current_branch=$(git branch --show-current)
 
