@@ -8,6 +8,10 @@ echo "Creating symlinks..."
 ln -sf "$DOTFILES/.vimrc" "$HOME/.vimrc"
 
 # Neovim
+if [ -d "$HOME/.config/nvim" ] && [ ! -L "$HOME/.config/nvim" ]; then
+  cp -r "$HOME/.config/nvim" "$HOME/.config/nvim.backup"
+  echo "nvim.backup created"
+fi
 rm -rf "$HOME/.config/nvim"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 
