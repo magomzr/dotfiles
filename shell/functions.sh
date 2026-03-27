@@ -24,11 +24,11 @@ gclean() {
   current_branch=$(git branch --show-current)
 
   # Check for pending changes
-  local status
-  status=$(git status -s)
-  if [ -n "$status" ]; then
+  local pending
+  pending=$(git status -s)
+  if [ -n "$pending" ]; then
     echo -e "  ${RED}!${RESET} you have uncommitted changes:\n"
-    echo "$status" | sed 's/^/    /'
+    echo "$pending" | sed 's/^/    /'
     echo ""
     printf "  discard them and continue? [Y/n] "
     read -r answer
