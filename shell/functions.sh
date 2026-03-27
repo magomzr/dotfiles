@@ -24,8 +24,12 @@ gclean() {
   current_branch=$(git branch --show-current)
 
   # Check for pending changes
-  if [ -n "$(git status -s)" ]; then
-    echo -e "  ${RED}!${RESET} you have uncommitted changes."
+  local status
+  status=$(git status -s)
+  if [ -n "$status" ]; then
+    echo -e "  ${RED}!${RESET} you have uncommitted changes:\n"
+    echo "$status" | sed 's/^/    /'
+    echo ""
     printf "  discard them and continue? [Y/n] "
     read -r answer
     if [ -z "$answer" ] || [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
