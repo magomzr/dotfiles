@@ -26,7 +26,7 @@ return {
     config = function()
       require('mason').setup()
       local registry = require('mason-registry')
-      local tools = { 'prettier' }
+      local tools = { 'prettier', 'gofumpt' }
       for _, tool in ipairs(tools) do
         if not registry.is_installed(tool) then
           vim.cmd('MasonInstall ' .. tool)
@@ -51,7 +51,13 @@ return {
             require('lspconfig').ts_ls.setup({})
           end,
           gopls = function()
-            require('lspconfig').gopls.setup({})
+            require('lspconfig').gopls.setup({
+              settings = {
+                gopls = {
+                  gofumpt = true
+                }
+              }
+            })
           end,
         }
       })
@@ -102,6 +108,7 @@ return {
           json = { 'prettier' },
           css = { 'prettier' },
           html = { 'prettier' },
+          go = { 'gofumpt' },
         },
       })
     end,
