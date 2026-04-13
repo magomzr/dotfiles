@@ -1,3 +1,4 @@
+# Fetchs and cleans current repository, then checkouts to the new branch provided as an argument
 gclean() {
   local target_branch="${1:-main}"
   local current_branch
@@ -72,4 +73,16 @@ gclean() {
   echo ""
   echo -e "  ${GREEN}✓ done.${RESET}"
   echo ""
+}
+
+# Creates a new branch using the "git checkout -b" command
+gcb() {
+  local branch_name="$1"
+
+  if [ -z "$branch_name" ]; then
+    echo -e "  ${RED}✗${RESET} please provide a branch name."
+    return 1
+  fi
+
+  git checkout -b "$branch_name"
 }
