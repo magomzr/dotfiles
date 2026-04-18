@@ -1,3 +1,11 @@
+_header() {
+  local CYAN='\033[0;36m'
+  local RESET='\033[0m'
+
+  echo ""
+  echo -e "${CYAN}  $1 — magomzr${RESET} · $(date '+%Y-%m-%d %H:%M:%S')"
+}
+
 # Fetchs and cleans current repository, then checkouts to the new branch provided as an argument
 gclean() {
   local target_branch="${1:-main}"
@@ -11,9 +19,8 @@ gclean() {
   local RESET='\033[0m'
 
   # Header
-  echo ""
-  echo -e "${CYAN}  gclean — magomzr${RESET}"
-  echo -e "  target: ${GREEN}$target_branch${RESET} · $(date '+%Y-%m-%d %H:%M:%S')"
+  _header "gclean"
+  echo -e "  target: ${GREEN}$target_branch${RESET}"
   echo ""
 
   # Check if we are in a repo
@@ -77,6 +84,9 @@ gclean() {
 
 # Creates a new branch using the "git checkout -b" command
 gcb() {
+  # Header
+  _header "gcb"
+
   local branch_name="$1"
 
   if [ -z "$branch_name" ]; then
