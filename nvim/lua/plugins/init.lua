@@ -120,7 +120,7 @@ return {
     lazy = false,
     config = function()
       require('blame').setup({
-        date_format = "%Y-%m-%d",
+        date_format = "%Y-%m-%d %H:%M:%S",
         virtual_style = "right_align",
         merge_consecutive = true,
         commit_detail_view = "vsplit",
