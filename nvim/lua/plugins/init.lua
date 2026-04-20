@@ -113,4 +113,18 @@ return {
       })
     end,
   },
+
+  -- git blame
+  {
+    "FabijanZulj/blame.nvim",
+    lazy = false,
+    config = function()
+      require('blame').setup({
+        date_format = "%Y-%m-%d",
+        virtual_style = "right_align",
+        merge_consecutive = true,
+        commit_detail_view = "vsplit",
+      })
+    end,
+  }
 }

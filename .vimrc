@@ -104,6 +104,9 @@ nnoremap ]g :cnext<CR>
 " previous result
 nnoremap [g :cprev<CR>
 
+" Git blame
+nnoremap <leader>b :BlameToggle<CR>
+
 " Jump to last cursor position when reopening a file
 autocmd BufReadPost *
   \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
