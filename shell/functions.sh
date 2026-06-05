@@ -96,3 +96,11 @@ gcb() {
 
   git checkout -b "$branch_name"
 }
+
+# Ammends to previous commit without edition
+gcam() {
+  # Header
+  _header "gcam"
+
+  git commit --ammend --no-edit || return 1
+}
