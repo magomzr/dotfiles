@@ -104,3 +104,10 @@ gcam() {
 
   git commit --ammend --no-edit || return 1
 }
+
+# Pushes the current branch to the remote repository
+gpoc() {
+  local current_branch="$(git branch --show-current)" || return 1
+
+  git push origin "$current_branch" || return 1
+}
