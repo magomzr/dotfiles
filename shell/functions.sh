@@ -8,7 +8,7 @@ _header() {
 
 # Fetchs and cleans current repository, then checkouts to the new branch provided as an argument
 gclean() {
-  local target_branch="${1:-main}"
+  local target_branch="${1:-$(git branch --show-current || echo 'main')}"
   local current_branch
   local tmp_branch="cleanup/$$"
 
