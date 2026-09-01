@@ -97,12 +97,12 @@ gcb() {
   git checkout -b "$branch_name"
 }
 
-# Ammends to previous commit without edition
+# Amends to previous commit without edition
 gcam() {
   # Header
   _header "gcam"
 
-  git commit --ammend --no-edit || return 1
+  git commit --amend --no-edit || return 1
 }
 
 # Pushes the current branch to the remote repository
